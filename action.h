@@ -2,10 +2,11 @@
 #define ACTION_H
 
 
-class Action
+enum Action
 {
-public:
-    Action();
+    MOVE,
+    TURN_LEFT,
+    TURN_RIGHT
 };
 
 #endif // ACTION_H

@@ -25,10 +25,24 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+    gamewidget.cpp \
+    levelmanager.cpp \
+    levelfield.cpp \
+    mainwidget.cpp \
+    codewidget.cpp \
+    codeblockswidget.cpp \
+    codeblockbutton.cpp
 
 HEADERS += \
-        mainwindow.h
+    gamewidget.h \
+    levelmanager.h \
+    levelfield.h \
+    mainwidget.h \
+    codewidget.h \
+    codeblockswidget.h \
+    action.h \
+    codeblockbutton.h
 
-FORMS += \
-        mainwindow.ui
+FORMS +=
+
+DISTFILES +=

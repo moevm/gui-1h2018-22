@@ -8,7 +8,7 @@ class LevelField : public QWidget
     Q_OBJECT
 public:
     explicit LevelField(QWidget *parent = nullptr);
-
+    void paintEvent(QPaintEvent *event);
 signals:
 
 public slots:
