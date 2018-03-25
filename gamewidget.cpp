@@ -17,7 +17,7 @@ GameWidget::GameWidget(QWidget *parent) : QWidget(parent)
     // устанавливаем цвет фона
     Pal.setColor(QPalette::Background, QColor(0,0,255));
     this->setAutoFillBackground(true);
-    this->setPalette(Pal);
+    //this->setPalette(Pal);
 
     setMinimumSize(QSize(600, 400));
 
@@ -40,19 +40,19 @@ void GameWidget::timerEvent(QTimerEvent *event){
     //emit update();
 }
 
-void GameWidget::createLevel(QVector<QVector<bool>> level)
+void GameWidget::showLevel(LevelManager *lm)
 {
 
-
-    this->level = level;
-    QWidget *w = new QWidget(this);
+    QVector<QVector<FieldState>> level = lm->getCurrentLevel();
     //if(!level.isEmpty()){
-    QGridLayout* gl = new QGridLayout(w);
+    QGridLayout* gl = new QGridLayout(this);
     //setLayout(gl);
     for(int i = 0; i < 5; i++){
-        for(int j = 0; j < 5; j++){
-            gl->addWidget(new QPushButton(this),i, j);
-            qDebug() << "Hi";
+        for(int j = 0; j < 6; j++){
+            LevelField* lf = new LevelField(this);
+            qDebug() << level[i][j];
+            lf->setField(level[i][j]);
+            gl->addWidget(lf,i, j);
         }
     }
     //}
@@ -60,12 +60,4 @@ void GameWidget::createLevel(QVector<QVector<bool>> level)
 
 }
 
-void GameWidget::setLevel(QVector<QVector<bool> > level)
-{
-    this->level = level;
 
-}
-
-void GameWidget::foo()
-{
-}

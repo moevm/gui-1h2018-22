@@ -14,6 +14,8 @@ class CodeBlocksWidget : public QWidget
 public:
     explicit CodeBlocksWidget(QWidget *parent = nullptr);
 
+    CodeBlockButton* getButton(int index);
+
 signals:
 
 public slots:
@@ -23,7 +25,6 @@ public slots:
             qDebug() << cbb[i]->isSelected();
         }
         qDebug() << " ";
-
     }
 };
 

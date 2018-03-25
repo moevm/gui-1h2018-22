@@ -6,7 +6,8 @@ enum Action
 {
     MOVE,
     TURN_LEFT,
-    TURN_RIGHT
+    TURN_RIGHT,
+    NOTHING
 };
 
 #endif // ACTION_H

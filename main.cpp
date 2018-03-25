@@ -1,4 +1,3 @@
-#include "mainwindow.h"
 #include <QApplication>
 #include "gamewidget.h"
 #include "mainwidget.h"
@@ -9,7 +8,11 @@ int main(int argc, char *argv[])
 
     MainWidget* mw = new MainWidget();
     mw->setGame();
-    mw->foo();
+    LevelManager* lm = new LevelManager();
+    lm->setLevel(0);
+    mw->update(lm);
     mw->show();
+
+
     return a.exec();
 }

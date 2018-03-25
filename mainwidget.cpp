@@ -18,11 +18,24 @@ void MainWidget::setGame()
     qhbl->addWidget(codeBlocksWidget);
 
     layout()->addItem(qhbl);
-    layout()->addWidget(codeWidget);
+    qhbl = new QHBoxLayout();
+    qhbl->addWidget(codeWidget);
+    QPushButton* start = new QPushButton(this);
+    start->setMinimumSize(QSize(50, 50));
+    start->setMaximumSize(QSize(50, 50));
+
+    qhbl->addWidget(start);
+    layout()->addItem(qhbl);
+
+    connect(codeBlocksWidget->getButton(0),SIGNAL(clicked(bool)),codeWidget,SLOT(setActiveMove()));
+    connect(codeBlocksWidget->getButton(1),SIGNAL(clicked(bool)),codeWidget,SLOT(setActiveTurnRight()));
+    connect(codeBlocksWidget->getButton(2),SIGNAL(clicked(bool)),codeWidget,SLOT(setActiveTurnLeft()));
+
 
 }
 
-void MainWidget::foo()
+void MainWidget::update(LevelManager *lm)
 {
-     gameWidget->foo();
+    gameWidget->showLevel(lm);
 }
+

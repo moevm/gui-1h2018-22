@@ -41,7 +41,8 @@ HEADERS += \
     codewidget.h \
     codeblockswidget.h \
     action.h \
-    codeblockbutton.h
+    codeblockbutton.h \
+    fieldstate.h
 
 FORMS +=
 

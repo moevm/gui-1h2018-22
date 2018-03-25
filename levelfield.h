@@ -2,12 +2,15 @@
 #define LEVELFIELD_H
 
 #include <QWidget>
+#include "fieldstate.h"
 
 class LevelField : public QWidget
 {
     Q_OBJECT
+    FieldState fs;
 public:
     explicit LevelField(QWidget *parent = nullptr);
+    void setField(FieldState fs);
     void paintEvent(QPaintEvent *event);
 signals:
 

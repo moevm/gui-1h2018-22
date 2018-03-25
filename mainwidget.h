@@ -16,8 +16,7 @@ class MainWidget : public QWidget
 public:
     explicit MainWidget(QWidget *parent = nullptr);
     void setGame();
-    void foo();
-
+    void update(LevelManager *lm);
 
 signals:
 

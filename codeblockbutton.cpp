@@ -15,6 +15,11 @@ void CodeBlockButton::setAct(Action act)
 
 }
 
+void CodeBlockButton::setChangeAct(Action act)
+{
+    this->changeAct = act;
+}
+
 void CodeBlockButton::setSelected(bool selected)
 {
     this->selected = selected;
@@ -65,6 +70,15 @@ void CodeBlockButton::on_codeBlockButton_clicked()
 {
     selected = true;
     drawSelect();
+}
+
+void CodeBlockButton::changeAction()
+{
+    if(changeAct != NOTHING) {
+        act = act == NOTHING ? changeAct : NOTHING;
+        drawAct();
+
+    }
 }
 
 

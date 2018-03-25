@@ -24,12 +24,17 @@ CodeBlocksWidget::CodeBlocksWidget(QWidget *parent) : QWidget(parent)
     cbb[2]->setAct(TURN_LEFT);
     for(int i = 0; i < 3; i++) {
         connect(cbb[i], SIGNAL(clicked(bool)), this, SLOT(resetSelect()));
-
         connect(cbb[i], SIGNAL(clicked(bool)), cbb[i], SLOT(on_codeBlockButton_clicked()));
+
         layout()->addWidget(cbb[i]);
     }
     QPushButton* pb = new QPushButton(this);
     connect(pb, SIGNAL(clicked(bool)), this, SLOT(log()));
+}
+
+CodeBlockButton *CodeBlocksWidget::getButton(int index)
+{
+    return cbb[index];
 }
 
 void CodeBlocksWidget::resetSelect()

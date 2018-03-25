@@ -1,13 +1,18 @@
 #ifndef LEVELMANAGER_H
 #define LEVELMANAGER_H
 #include <QVector>
+#include "fieldstate.h"
 
 class LevelManager
 {
-    QVector<QVector<QVector<bool>>> levels;
+    QVector<QVector<QVector<QChar>>> levels;
+    QVector<QVector<FieldState>> currentLevel;
+
 public:
     LevelManager();
-    QVector<QVector<bool>> getLevel(int level);
+    void setLevel(int level);
+    QVector<QVector<FieldState>> getCurrentLevel();
+
 };
 
 #endif // LEVELMANAGER_H
