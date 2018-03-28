@@ -9,9 +9,6 @@
 
 GameWidget::GameWidget(QWidget *parent) : QWidget(parent)
 {
-    //qDebug() << this->width();
-    //qDebug() << this->height();
-    //last_rect = QRect(100, 100, 10, 10);
     QPalette Pal(palette());
 
     // устанавливаем цвет фона
@@ -26,38 +23,30 @@ GameWidget::GameWidget(QWidget *parent) : QWidget(parent)
 
 void GameWidget::paintEvent(QPaintEvent *event)
 {
-    //qDebug() << this->width();
-    //qDebug() << this->height();
 
-
-   //QPainter p(this);
-   //p.setPen(Qt::red);
-   //p.setBrush(Qt::red);
-   //p.drawEllipse(last_rect);
 }
 
 void GameWidget::timerEvent(QTimerEvent *event){
-    //emit update();
 }
 
 void GameWidget::showLevel(LevelManager *lm)
 {
-
+    qDebug() << "StartShow";
+    qDeleteAll(children());
     QVector<QVector<FieldState>> level = lm->getCurrentLevel();
-    //if(!level.isEmpty()){
     QGridLayout* gl = new QGridLayout(this);
-    //setLayout(gl);
-    for(int i = 0; i < 5; i++){
-        for(int j = 0; j < 6; j++){
+    for(int i = 0; i < level.size(); i++){
+        for(int j = 0; j < level[0].size(); j++){
             LevelField* lf = new LevelField(this);
-            qDebug() << level[i][j];
             lf->setField(level[i][j]);
             gl->addWidget(lf,i, j);
+
         }
     }
     //}
 
 
 }
+
 
 

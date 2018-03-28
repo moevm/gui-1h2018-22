@@ -26,7 +26,6 @@ LevelManager::LevelManager()
     for(int i = 0; i < h; i++) {
         levels[0][i] = QVector<QChar>(w);
     }
-     qDebug() << "level init";
     for(int i = 0; i < h; i++){
         str = levelFile.readLine();
         list = str.split(" ");
@@ -34,7 +33,6 @@ LevelManager::LevelManager()
             levels[0][i][j] = list.at(j).at(0);
         }
     }
-    qDebug() << "level end";
 
     for(int i = 0; i < w; i++){
         for(int j = 0; j < h; j++){
@@ -53,7 +51,6 @@ void LevelManager::setLevel(int level)
     for(int i = 0; i < height; i++) {
         currentLevel[i] = QVector<FieldState>(width);
     }
-    qDebug() << "start set";
     for(int i = 0; i < height; i++){
         for(int j = 0; j < width; j++){
             QChar field = levels[level][i][j];
@@ -62,11 +59,12 @@ void LevelManager::setLevel(int level)
             } else if(field == '1'){
                 currentLevel[i][j] = WALL;
             }else if(field == 'p'){
+                player.setPos(i, j);
+                player.setTurn(PLAYER_RIGHT);
                 currentLevel[i][j] = PLAYER_RIGHT;
             }
         }
     }
-    qDebug() << "end set";
 
 }
 
@@ -74,6 +72,49 @@ QVector<QVector<FieldState>> LevelManager::getCurrentLevel()
 {
     return currentLevel;
 }
+
+
+
+void LevelManager::updateLevel(Action act)
+{
+    switch (act) {
+    case TURN_RIGHT:
+    {
+        player.turnRight();
+        qDebug() << "player.turnRight();";
+        currentLevel[player.getX()][player.getY()] = player.getTurn();
+        break;
+    }
+    case TURN_LEFT:
+    {
+        player.turnLeft();
+        qDebug() << "player.turnLeft();";
+        currentLevel[player.getX()][player.getY()] = player.getTurn();
+        break;
+    }
+    case MOVE:
+    {
+        if(isAvailibaleMove()){
+            currentLevel[player.getX()][player.getY()] = CELL;
+            player.move();
+            qDebug() << "player.move();";
+            currentLevel[player.getX()][player.getY()] = player.getTurn();
+        }
+        break;
+    }
+
+    }
+
+}
+
+bool LevelManager::isAvailibaleMove()
+{
+    return player.getNextPos().x() >= 0
+        && player.getNextPos().x() < currentLevel.size()
+        && player.getNextPos().y() >= 0
+        && player.getNextPos().y() < currentLevel[0].size();
+}
+
 
 
 

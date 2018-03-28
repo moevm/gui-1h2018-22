@@ -5,6 +5,7 @@ CodeBlockButton::CodeBlockButton(QWidget *parent) : QPushButton(parent)
     setMinimumSize(QSize(50, 50));
     setMaximumSize(QSize(50, 50));
 
+
 }
 
 void CodeBlockButton::setAct(Action act)
@@ -64,6 +65,11 @@ void CodeBlockButton::drawAct()
 bool CodeBlockButton::isSelected()
 {
     return selected;
+}
+
+Action CodeBlockButton::getAct()
+{
+    return act;
 }
 
 void CodeBlockButton::on_codeBlockButton_clicked()

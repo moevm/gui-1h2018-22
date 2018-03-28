@@ -31,7 +31,9 @@ SOURCES += \
     mainwidget.cpp \
     codewidget.cpp \
     codeblockswidget.cpp \
-    codeblockbutton.cpp
+    codeblockbutton.cpp \
+    startbutton.cpp \
+    player.cpp
 
 HEADERS += \
     gamewidget.h \
@@ -42,7 +44,9 @@ HEADERS += \
     codeblockswidget.h \
     action.h \
     codeblockbutton.h \
-    fieldstate.h
+    fieldstate.h \
+    startbutton.h \
+    player.h
 
 FORMS +=
 

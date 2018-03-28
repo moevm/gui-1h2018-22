@@ -30,7 +30,7 @@ void LevelField::paintEvent(QPaintEvent *event)
     QPalette Pal(palette());
 
     if(fs == CELL) {
-        Pal.setColor(QPalette::Background, QColor(50,255,50));
+        Pal.setColor(QPalette::Background, QColor(100,100,255));
     } else if(fs == WALL) {
         Pal.setColor(QPalette::Background, QColor(150,150,150));
     } else {

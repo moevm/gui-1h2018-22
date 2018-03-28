@@ -12,11 +12,13 @@ public:
     explicit CodeWidget(QWidget *parent = nullptr);
 
 signals:
-
+    void sendCode(QVector<Action>*);
+    void errorCode();
 public slots:
     void setActiveMove();
     void setActiveTurnRight();
     void setActiveTurnLeft();
+    void getCode();
 
 };
 

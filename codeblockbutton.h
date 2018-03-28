@@ -19,6 +19,7 @@ public:
     void drawSelect();
     void drawAct();
     bool isSelected();
+    Action getAct();
 
 signals:
 

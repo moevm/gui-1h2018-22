@@ -5,6 +5,7 @@
 #include <QRect>
 #include "levelmanager.h"
 #include "levelfield.h"
+#include "action.h"
 
 class GameWidget : public QWidget
 {
