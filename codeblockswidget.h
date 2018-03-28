@@ -20,12 +20,6 @@ signals:
 
 public slots:
     void resetSelect();
-    void log(){
-        for(int i = 0; i < 3; i++){
-            qDebug() << cbb[i]->isSelected();
-        }
-        qDebug() << " ";
-    }
 };
 
 #endif // CODEBLOCKSWIDGET_H

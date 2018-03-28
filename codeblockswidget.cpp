@@ -6,13 +6,6 @@
 
 CodeBlocksWidget::CodeBlocksWidget(QWidget *parent) : QWidget(parent)
 {
-    QPalette Pal(palette());
-
-    // устанавливаем цвет фона
-    Pal.setColor(QPalette::Background, QColor(255,0,255));
-    this->setAutoFillBackground(true);
-    this->setPalette(Pal);
-
     setMaximumWidth(100);
     setMinimumSize(QSize(100, 400));
     for(int i = 0; i < 3; i++){
@@ -28,8 +21,6 @@ CodeBlocksWidget::CodeBlocksWidget(QWidget *parent) : QWidget(parent)
 
         layout()->addWidget(cbb[i]);
     }
-    QPushButton* pb = new QPushButton(this);
-    connect(pb, SIGNAL(clicked(bool)), this, SLOT(log()));
 }
 
 CodeBlockButton *CodeBlocksWidget::getButton(int index)
