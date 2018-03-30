@@ -109,10 +109,13 @@ void LevelManager::updateLevel(Action act)
 
 bool LevelManager::isAvailibaleMove()
 {
-    return player.getNextPos().x() >= 0
-        && player.getNextPos().x() < currentLevel.size()
-        && player.getNextPos().y() >= 0
-        && player.getNextPos().y() < currentLevel[0].size();
+    int nx = player.getNextPos().x();
+    int ny = player.getNextPos().y();
+    return nx >= 0
+        && nx < currentLevel.size()
+        && ny >= 0
+        && ny < currentLevel[0].size()
+        && currentLevel[nx][ny] != WALL;
 }
 
 
