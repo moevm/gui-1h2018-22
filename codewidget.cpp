@@ -14,6 +14,14 @@ CodeWidget::CodeWidget(QWidget *parent) : QWidget(parent)
     }
 }
 
+void CodeWidget::highlightBlock(int i)
+{
+    cbb[i]->setSelected(true);
+    cbb[i]->drawSelect();
+    if(i > 0)
+        cbb[i-1]->removeSelect();
+}
+
 void CodeWidget::setActiveMove()
 {
     for(int i = 0; i < 15; i++)

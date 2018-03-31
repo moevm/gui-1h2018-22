@@ -31,6 +31,7 @@ public:
 
 
 signals:
+    highlightBlock(int);
 
 public slots:
     void update();

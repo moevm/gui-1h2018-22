@@ -42,6 +42,8 @@ void MainWidget::setGame()
     connect(codeWidget, SIGNAL(sendCode(QVector<Action>*)), this, SLOT(setCode(QVector<Action>*)));
     connect(codeWidget, SIGNAL(errorCode()), startButton, SLOT(turnState()));
 
+    connect(this, SIGNAL(highlightBlock(int)), codeWidget, SLOT(highlightBlock(int)));
+
 }
 
 void MainWidget::update()
@@ -70,6 +72,7 @@ void MainWidget::start()
 void MainWidget::timerEvent(QTimerEvent *event)
 {
     if(started){
+        emit highlightBlock(count);
         levelManager->updateLevel(code[count++]);
         update();
         if(count == code.size()) {

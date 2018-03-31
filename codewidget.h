@@ -15,6 +15,7 @@ signals:
     void sendCode(QVector<Action>*);
     void errorCode();
 public slots:
+    void highlightBlock(int i);
     void setActiveMove();
     void setActiveTurnRight();
     void setActiveTurnLeft();

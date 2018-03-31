@@ -31,13 +31,20 @@ void CodeBlockButton::drawSelect()
     QPalette pal = palette();
 
     if(selected){
-        pal.setColor(QPalette::Button, QColor(Qt::green));
+        pal.setColor(QPalette::Button, QColor(Qt::blue));
     } else{
         pal.setColor(QPalette::Button, QColor(Qt::red));
     }
     setAutoFillBackground(true);
     setPalette(pal);
     update();
+}
+
+void CodeBlockButton::removeSelect()
+{
+    setAutoFillBackground(false);
+    update();
+
 }
 
 void CodeBlockButton::drawAct()

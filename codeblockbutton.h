@@ -17,6 +17,7 @@ public:
     void setChangeAct(Action act);
     void setSelected(bool selected);
     void drawSelect();
+    void removeSelect();
     void drawAct();
     bool isSelected();
     Action getAct();
