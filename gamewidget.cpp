@@ -39,6 +39,9 @@ void GameWidget::showLevel(LevelManager *lm)
         for(int j = 0; j < level[0].size(); j++){
             LevelField* lf = new LevelField(this);
             lf->setField(level[i][j]);
+            if(lm->hasCoin(i, j)) {
+                lf->putCoin();
+            }
             gl->addWidget(lf,i, j);
 
         }

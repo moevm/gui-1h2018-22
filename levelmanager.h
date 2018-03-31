@@ -4,13 +4,14 @@
 #include "fieldstate.h"
 #include "player.h"
 #include "action.h"
-
+#include "coin.h"
 
 class LevelManager
 {
     QVector<QVector<QVector<QChar>>> levels;
     QVector<QVector<FieldState>> currentLevel;
     Player player;
+    QVector<Coin> coins;
 public:
     LevelManager();
     void setLevel(int level);
@@ -19,6 +20,9 @@ public:
     void updateLevel(Action act);
     void setCode(QVector<Action>* code);
     bool isAvailibaleMove();
+    bool hasCoin(int x, int y);
+    bool removeCoin(int x, int y);
+
 };
 
 #endif // LEVELMANAGER_H

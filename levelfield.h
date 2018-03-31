@@ -8,9 +8,11 @@ class LevelField : public QWidget
 {
     Q_OBJECT
     FieldState fs;
+    bool hasCoin = false;
 public:
     explicit LevelField(QWidget *parent = nullptr);
     void setField(FieldState fs);
+    void putCoin();
     void paintEvent(QPaintEvent *event);
 signals:
 

@@ -19,10 +19,12 @@ LevelField::LevelField(QWidget *parent) : QWidget(parent)
 
 void LevelField::setField(FieldState fs)
 {
-    this->fs = fs;
+    this->fs = fs;    
+}
 
-
-
+void LevelField::putCoin()
+{
+    hasCoin = true;
 }
 
 void LevelField::paintEvent(QPaintEvent *event)
@@ -31,6 +33,13 @@ void LevelField::paintEvent(QPaintEvent *event)
 
     if(fs == CELL) {
         Pal.setColor(QPalette::Background, QColor(100,100,255));
+        if(hasCoin){
+            QPixmap pixmap;
+            QPainter painter(this);
+            pixmap.load("D:/game/GUI/images/coin.png");
+            painter.drawPixmap( QPoint((width() - pixmap.width())/2,(height()-pixmap.height())/2), pixmap );
+
+        }
     } else if(fs == WALL) {
         Pal.setColor(QPalette::Background, QColor(150,150,150));
     } else {
