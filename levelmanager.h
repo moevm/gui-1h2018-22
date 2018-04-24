@@ -22,6 +22,7 @@ public:
     bool isAvailibaleMove();
     bool hasCoin(int x, int y);
     bool removeCoin(int x, int y);
+    int coinsSize();
 
 };
 

@@ -6,6 +6,7 @@
 #include <QGridLayout>
 #include <QPushButton>
 #include <QHBoxLayout>
+#include <QLabel>
 
 GameWidget::GameWidget(QWidget *parent) : QWidget(parent)
 {
@@ -31,7 +32,7 @@ void GameWidget::timerEvent(QTimerEvent *event){
 
 void GameWidget::showLevel(LevelManager *lm)
 {
-    qDebug() << "StartShow";
+    //qDebug() << "StartShow";
     qDeleteAll(children());
     QVector<QVector<FieldState>> level = lm->getCurrentLevel();
     QGridLayout* gl = new QGridLayout(this);
@@ -50,6 +51,8 @@ void GameWidget::showLevel(LevelManager *lm)
 
 
 }
+
+
 
 
 

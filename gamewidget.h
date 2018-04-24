@@ -16,6 +16,7 @@ public:
     void paintEvent(QPaintEvent *event);
     void timerEvent(QTimerEvent *event);
     void showLevel(LevelManager *lm);
+    void showResult(QString res);
 
 signals:
 

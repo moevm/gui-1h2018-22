@@ -16,6 +16,7 @@ signals:
     void errorCode();
 public slots:
     void highlightBlock(int i);
+    void extinguish();
     void setActiveMove();
     void setActiveTurnRight();
     void setActiveTurnLeft();

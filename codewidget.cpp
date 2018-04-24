@@ -22,6 +22,12 @@ void CodeWidget::highlightBlock(int i)
         cbb[i-1]->removeSelect();
 }
 
+void CodeWidget::extinguish()
+{
+    for(int i = 0; i < 15; i++)
+        cbb[i]->removeSelect();
+}
+
 void CodeWidget::setActiveMove()
 {
     for(int i = 0; i < 15; i++)

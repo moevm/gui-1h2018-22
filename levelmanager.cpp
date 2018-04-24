@@ -98,15 +98,16 @@ void LevelManager::updateLevel(Action act)
     case MOVE:
     {
         if(isAvailibaleMove()){
+            currentLevel[player.getX()][player.getY()] = CELL;
+            player.move();
             int px = player.getX();
             int py = player.getY();
+            qDebug() << "player.move();";
             if(this->hasCoin(px, py)){
                 this->removeCoin(px, py);
+                qDebug() << "Coin removed";
             }
-            currentLevel[px][py] = CELL;
-            player.move();
-            qDebug() << "player.move();";
-            currentLevel[player.getX()][player.getY()] = player.getTurn();
+            currentLevel[px][py] = player.getTurn();
         }
         break;
     }
@@ -145,6 +146,11 @@ bool LevelManager::removeCoin(int x, int y)
         }
     }
     return false;
+}
+
+int LevelManager::coinsSize()
+{
+    return coins.size();
 }
 
 

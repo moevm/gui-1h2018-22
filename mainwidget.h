@@ -2,6 +2,7 @@
 #define MAINWIDGET_H
 
 #include <QWidget>
+#include <QLabel>
 #include <gamewidget.h>
 #include <codewidget.h>
 #include <codeblockswidget.h>
@@ -16,12 +17,12 @@ class MainWidget : public QWidget
     CodeWidget *codeWidget;
     CodeBlocksWidget *codeBlocksWidget;
     StartButton *startButton;
-
+    QLabel* result;
     LevelManager* levelManager;
 
     QVector<Action> code;
     bool started = false;
-    int count = 0;
+    int cursor = 0;
 
 public:
     explicit MainWidget(QWidget *parent = nullptr);
@@ -32,10 +33,12 @@ public:
 
 signals:
     highlightBlock(int);
+    extinguish();
 
 public slots:
     void update();
     void setCode(QVector<Action>* code);
+    void stop();
 
 };
 

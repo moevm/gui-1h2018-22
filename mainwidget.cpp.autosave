@@ -95,11 +95,7 @@ void MainWidget::timerEvent(QTimerEvent *event)
         if(cursor == code.size()){
               QString qs;
               qs = levelManager->coinsSize() == 0 ? "WIN" : "LOSE";
-
               result->setText(qs);
-
-        } else {
-
         }
         update();
 
