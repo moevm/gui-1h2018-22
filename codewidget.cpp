@@ -18,8 +18,8 @@ void CodeWidget::highlightBlock(int i)
 {
     cbb[i]->setSelected(true);
     cbb[i]->drawSelect();
-    if(i > 0)
-        cbb[i-1]->removeSelect();
+//    if(i > 0)
+//        cbb[i-1]->removeSelect();
 }
 
 void CodeWidget::extinguish()
@@ -75,7 +75,7 @@ void CodeWidget::getCode()
             if((*code)[i].getAction() == LOOP_END){
                 loops--;
                 int iter = cbb[i]->getIterations()->toPlainText().toInt();
-
+                (*code)[i].setIterations(iter);
                 if(loops < 0 || iter <= 0){
                     correctCode = false;
                     break;

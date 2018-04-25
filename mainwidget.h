@@ -9,6 +9,8 @@
 #include <startbutton.h>
 #include <levelmanager.h>
 #include <action.h>
+#include <QtCore/QStack>
+#include "loop.h"
 
 class MainWidget : public QWidget
 {
@@ -19,7 +21,7 @@ class MainWidget : public QWidget
     StartButton *startButton;
     QLabel* result;
     LevelManager* levelManager;
-
+    QStack<Loop> loops;
     QVector<CodeBlock> code;
     bool started = false;
     int cursor = 0;

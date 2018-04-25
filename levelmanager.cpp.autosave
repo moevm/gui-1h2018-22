@@ -104,8 +104,7 @@ void LevelManager::updateLevel(Action act)
             int py = player.getY();
             qDebug() << "player.move();";
             while(this->hasCoin(px, py)){
-                if(this->removeCoin(px, py))
-                    qDebug() << "Coin removed";
+                this->removeCoin(px, py);
             }
             currentLevel[px][py] = player.getTurn();
         }

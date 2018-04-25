@@ -93,16 +93,40 @@ void MainWidget::start()
 void MainWidget::timerEvent(QTimerEvent *event)
 {
     if(started && cursor < code.size()){
+        emit extinguish();
         emit highlightBlock(cursor);
-        levelManager->updateLevel(code[cursor++].getAction());
+
+        levelManager->updateLevel(code[cursor].getAction());
+        if(code[cursor].getAction() == LOOP_START){
+            Loop loop;
+            if(!loops.isEmpty()){
+                loop = loops.top();
+                if(loop.getPosition() != cursor){
+                    loop.setPosition(cursor);
+                    loop.setIndex(0);
+                    loops.push(loop);
+                }
+            }else{
+                loop.setPosition(cursor);
+                loop.setIndex(0);
+                loops.push(loop);
+            }
+
+        }
+        if(code[cursor].getAction() == LOOP_END){
+            Loop loop = loops.pop();
+            loop.setIndex(loop.getIndex() + 1);
+            if(code[cursor].getIterations() != loop.getIndex()){
+                cursor = loop.getPosition();
+                loops.push(loop);
+            } else{
+                cursor++;
+            }
+        }else{
+            cursor++;
+        }
         if(cursor == code.size()){
-              QString qs;
-              qs = levelManager->coinsSize() == 0 ? "WIN" : "LOSE";
-
-              result->setText(qs);
-
-        } else {
-
+              result->setText(levelManager->coinsSize() == 0 ? "WIN" : "LOSE");
         }
         update();
 
