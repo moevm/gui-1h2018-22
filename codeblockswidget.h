@@ -9,7 +9,7 @@
 class CodeBlocksWidget : public QWidget
 {
     Q_OBJECT
-    CodeBlockButton *cbb[3];
+    CodeBlockButton *cbb[5];
 
 public:
     explicit CodeBlocksWidget(QWidget *parent = nullptr);

@@ -2,6 +2,7 @@
 #define CODEBLOCKBUTTON_H
 
 #include <QPushButton>
+#include <QTextEdit>
 #include "action.h"
 
 class CodeBlockButton : public QPushButton
@@ -10,17 +11,20 @@ class CodeBlockButton : public QPushButton
     Action act = NOTHING;
     bool selected = false;
     Action changeAct = NOTHING;
+    QTextEdit* iterations;
 
 public:
     explicit CodeBlockButton(QWidget *parent = nullptr);
     void setAct(Action act);
     void setChangeAct(Action act);
     void setSelected(bool selected);
+    void setIterations(QTextEdit* iterations);
     void drawSelect();
     void removeSelect();
     void drawAct();
     bool isSelected();
     Action getAct();
+    QTextEdit* getIterations();
 
 signals:
 

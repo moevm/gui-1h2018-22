@@ -20,6 +20,10 @@ public slots:
     void setActiveMove();
     void setActiveTurnRight();
     void setActiveTurnLeft();
+    void setActiveLoopStart();
+    void setActiveLoopEnd();
+
+
     void getCode();
 
 };

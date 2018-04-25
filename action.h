@@ -7,6 +7,8 @@ enum Action
     MOVE,
     TURN_LEFT,
     TURN_RIGHT,
+    LOOP_START,
+    LOOP_END,
     NOTHING
 };
 

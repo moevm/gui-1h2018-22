@@ -26,6 +26,11 @@ void CodeBlockButton::setSelected(bool selected)
     this->selected = selected;
 }
 
+void CodeBlockButton::setIterations(QTextEdit *iterations)
+{
+    this->iterations = iterations;
+}
+
 void CodeBlockButton::drawSelect()
 {
     QPalette pal = palette();
@@ -60,6 +65,12 @@ void CodeBlockButton::drawAct()
     case TURN_LEFT:
         pixmap.load("D:/game/GUI/images/turn_left.png");
         break;
+    case LOOP_START:
+        pixmap.load("D:/game/GUI/images/loop_start.png");
+        break;
+    case LOOP_END:
+        pixmap.load("D:/game/GUI/images/loop_end.png");
+        break;
     default:
         break;
     }
@@ -79,6 +90,11 @@ Action CodeBlockButton::getAct()
     return act;
 }
 
+QTextEdit *CodeBlockButton::getIterations()
+{
+    return iterations;
+}
+
 void CodeBlockButton::on_codeBlockButton_clicked()
 {
     selected = true;
@@ -88,7 +104,20 @@ void CodeBlockButton::on_codeBlockButton_clicked()
 void CodeBlockButton::changeAction()
 {
     if(changeAct != NOTHING) {
-        act = act == NOTHING ? changeAct : NOTHING;
+        if(act == NOTHING){
+            act = changeAct;
+            if(act == LOOP_END){
+                iterations = new QTextEdit(this);
+                iterations->setGeometry(15, 10, 20, 25);
+                iterations->show();
+            }
+        } else{
+            if(act == LOOP_END){
+                iterations->hide();
+                delete iterations;
+            }
+            act = NOTHING;
+        }
         drawAct();
 
     }

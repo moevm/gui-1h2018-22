@@ -39,6 +39,9 @@ void MainWidget::setGame()
     connect(codeBlocksWidget->getButton(0),SIGNAL(clicked(bool)),codeWidget,SLOT(setActiveMove()));
     connect(codeBlocksWidget->getButton(1),SIGNAL(clicked(bool)),codeWidget,SLOT(setActiveTurnRight()));
     connect(codeBlocksWidget->getButton(2),SIGNAL(clicked(bool)),codeWidget,SLOT(setActiveTurnLeft()));
+    connect(codeBlocksWidget->getButton(3),SIGNAL(clicked(bool)),codeWidget,SLOT(setActiveLoopStart()));
+    connect(codeBlocksWidget->getButton(4),SIGNAL(clicked(bool)),codeWidget,SLOT(setActiveLoopEnd()));
+
 
     connect(startButton, SIGNAL(clicked(bool)), startButton, SLOT(turnState()));
     connect(startButton, SIGNAL(start()), codeWidget, SLOT(getCode()));

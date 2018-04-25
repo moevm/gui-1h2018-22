@@ -46,15 +46,40 @@ void CodeWidget::setActiveTurnLeft()
         cbb[i]->setChangeAct(TURN_LEFT);
 }
 
+void CodeWidget::setActiveLoopStart()
+{
+    for(int i = 0; i < 15; i++)
+        cbb[i]->setChangeAct(LOOP_START);
+}
+
+void CodeWidget::setActiveLoopEnd()
+{
+    for(int i = 0; i < 15; i++)
+        cbb[i]->setChangeAct(LOOP_END);
+}
+
 void CodeWidget::getCode()
 {
     QVector<Action>* code = new QVector<Action>(15);
     bool correctCode = cbb[0]->getAct() != NOTHING;
+    int loops = 0;
     if(correctCode)
         for(int i =0; i < 15; i++) {
             (*code)[i] = cbb[i]->getAct();
             if((*code)[i] == NOTHING){
                correctCode = false;
+            }
+            if((*code)[i] == LOOP_START){
+                loops++;
+            }
+            if((*code)[i] == LOOP_END){
+                loops--;
+                int iter = cbb[i]->getIterations()->toPlainText().toInt();
+
+                if(loops < 0 || iter <= 0){
+                    correctCode = false;
+                    break;
+                }
             }
             if(!correctCode){
                if((*code)[i] != NOTHING){
@@ -62,7 +87,7 @@ void CodeWidget::getCode()
               }
             }
             if(i == 14){
-                correctCode = true;
+                correctCode = loops == 0;
             }
         }
     if(correctCode)
