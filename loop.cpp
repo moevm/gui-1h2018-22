@@ -1,17 +1,6 @@
 #include "loop.h"
 
-Loop::Loop(int position)
+Loop::Loop()
 {
-    this->position = position;
-    index = 0;
-}
 
-void Loop::increment()
-{
-    index++;
-}
-
-int Loop::getIndex()
-{
-    return index;
 }

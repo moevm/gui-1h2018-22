@@ -4,12 +4,8 @@
 
 class Loop
 {
-    int position;
-    int index;
 public:
-    Loop(int position);
-    void increment();
-    int getIndex();
+    Loop();
 };
 
 #endif // LOOP_H
