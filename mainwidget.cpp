@@ -48,7 +48,7 @@ void MainWidget::setGame()
     connect(startButton, SIGNAL(stop()), this, SLOT(stop()));
 
 
-    connect(codeWidget, SIGNAL(sendCode(QVector<Action>*)), this, SLOT(setCode(QVector<Action>*)));
+    connect(codeWidget, SIGNAL(sendCode(QVector<CodeBlock>*)), this, SLOT(setCode(QVector<CodeBlock>*)));
     connect(codeWidget, SIGNAL(errorCode()), startButton, SLOT(turnState()));
 
     connect(this, SIGNAL(highlightBlock(int)), codeWidget, SLOT(highlightBlock(int)));
@@ -62,13 +62,13 @@ void MainWidget::update()
     gameWidget->showLevel(levelManager);
 }
 
-void MainWidget::setCode(QVector<Action> *code)
+void MainWidget::setCode(QVector<CodeBlock> *code)
 {
-    this->code = QVector<Action>();
+    this->code = QVector<CodeBlock>();
     for(int i = 0; i < code->size(); i++) {
-        if((*code)[i] == NOTHING)
+        if((*code)[i].getAction() == NOTHING)
             break;
-        qDebug() << (*code)[i];
+        qDebug() << (*code)[i].getAction();
         this->code.append((*code)[i]);
 
     }
@@ -94,7 +94,7 @@ void MainWidget::timerEvent(QTimerEvent *event)
 {
     if(started && cursor < code.size()){
         emit highlightBlock(cursor);
-        levelManager->updateLevel(code[cursor++]);
+        levelManager->updateLevel(code[cursor++].getAction());
         if(cursor == code.size()){
               QString qs;
               qs = levelManager->coinsSize() == 0 ? "WIN" : "LOSE";

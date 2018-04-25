@@ -20,7 +20,7 @@ class MainWidget : public QWidget
     QLabel* result;
     LevelManager* levelManager;
 
-    QVector<Action> code;
+    QVector<CodeBlock> code;
     bool started = false;
     int cursor = 0;
 
@@ -37,7 +37,7 @@ signals:
 
 public slots:
     void update();
-    void setCode(QVector<Action>* code);
+    void setCode(QVector<CodeBlock>* code);
     void stop();
 
 };

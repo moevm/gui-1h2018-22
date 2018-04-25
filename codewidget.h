@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include "codeblockbutton.h"
+#include "codeblock.h"
 
 class CodeWidget : public QWidget
 {
@@ -12,7 +13,7 @@ public:
     explicit CodeWidget(QWidget *parent = nullptr);
 
 signals:
-    void sendCode(QVector<Action>*);
+    void sendCode(QVector<CodeBlock>*);
     void errorCode();
 public slots:
     void highlightBlock(int i);

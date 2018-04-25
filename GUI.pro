@@ -34,7 +34,8 @@ SOURCES += \
     codeblockbutton.cpp \
     startbutton.cpp \
     player.cpp \
-    coin.cpp
+    coin.cpp \
+    codeblock.cpp
 
 HEADERS += \
     gamewidget.h \
@@ -48,7 +49,8 @@ HEADERS += \
     fieldstate.h \
     startbutton.h \
     player.h \
-    coin.h
+    coin.h \
+    codeblock.h
 
 FORMS +=
 

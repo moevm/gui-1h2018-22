@@ -60,19 +60,19 @@ void CodeWidget::setActiveLoopEnd()
 
 void CodeWidget::getCode()
 {
-    QVector<Action>* code = new QVector<Action>(15);
+    QVector<CodeBlock>* code = new QVector<CodeBlock>(15);
     bool correctCode = cbb[0]->getAct() != NOTHING;
     int loops = 0;
     if(correctCode)
         for(int i =0; i < 15; i++) {
-            (*code)[i] = cbb[i]->getAct();
-            if((*code)[i] == NOTHING){
+            (*code)[i].setAction(cbb[i]->getAct());
+            if((*code)[i].getAction() == NOTHING){
                correctCode = false;
             }
-            if((*code)[i] == LOOP_START){
+            if((*code)[i].getAction() == LOOP_START){
                 loops++;
             }
-            if((*code)[i] == LOOP_END){
+            if((*code)[i].getAction() == LOOP_END){
                 loops--;
                 int iter = cbb[i]->getIterations()->toPlainText().toInt();
 
@@ -82,7 +82,7 @@ void CodeWidget::getCode()
                 }
             }
             if(!correctCode){
-               if((*code)[i] != NOTHING){
+               if((*code)[i].getAction() != NOTHING){
                   break;
               }
             }
