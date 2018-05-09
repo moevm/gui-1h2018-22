@@ -2,19 +2,20 @@
 #define STARTBUTTON_H
 
 #include <QPushButton>
-
+#include "startbuttonstates.h"
 
 class StartButton : public QPushButton
 {
     Q_OBJECT
-    bool started = false;
+    StartButtonState started = START;
 public:
     explicit StartButton(QWidget *parent = nullptr);
-
+    void setNext();
     void drawStart();
 signals:
     start();
     stop();
+    goNext();
 public slots:
     void turnState();
 };

@@ -28,6 +28,13 @@ void CodeWidget::extinguish()
         cbb[i]->removeSelect();
 }
 
+void CodeWidget::clean()
+{
+    for(int i = 0; i < 15; i++){
+        cbb[i]->clean();
+    }
+}
+
 void CodeWidget::setActiveMove()
 {
     for(int i = 0; i < 15; i++)

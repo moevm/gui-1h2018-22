@@ -23,7 +23,7 @@ public slots:
     void setActiveTurnLeft();
     void setActiveLoopStart();
     void setActiveLoopEnd();
-
+    void clean();
 
     void getCode();
 

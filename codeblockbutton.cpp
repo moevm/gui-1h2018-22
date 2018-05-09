@@ -4,8 +4,6 @@ CodeBlockButton::CodeBlockButton(QWidget *parent) : QPushButton(parent)
 {
     setMinimumSize(QSize(50, 50));
     setMaximumSize(QSize(50, 50));
-
-
 }
 
 void CodeBlockButton::setAct(Action act)
@@ -13,7 +11,6 @@ void CodeBlockButton::setAct(Action act)
     this->act = act;
     drawSelect();
     drawAct();
-
 }
 
 void CodeBlockButton::setChangeAct(Action act)
@@ -93,6 +90,17 @@ Action CodeBlockButton::getAct()
 QTextEdit *CodeBlockButton::getIterations()
 {
     return iterations;
+}
+
+void CodeBlockButton::clean()
+{
+    if(act == LOOP_END){
+        iterations->hide();
+        delete iterations;
+    }
+    act = NOTHING;
+    setAutoFillBackground(false);
+    drawAct();
 }
 
 void CodeBlockButton::on_codeBlockButton_clicked()

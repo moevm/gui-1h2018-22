@@ -9,6 +9,7 @@
 class LevelManager
 {
     QVector<QVector<QVector<QChar>>> levels;
+    int level;
     QVector<QVector<FieldState>> currentLevel;
     QPoint prevPlayersPos;
     Player player;
@@ -16,6 +17,8 @@ class LevelManager
 public:
     LevelManager();
     void setLevel(int level);
+    void setLevel();
+    int nextLevel();
     QVector<QVector<FieldState>> getCurrentLevel();
     void start();
     void updateLevel(Action act);

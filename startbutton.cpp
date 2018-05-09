@@ -9,10 +9,13 @@ StartButton::StartButton(QWidget *parent) : QPushButton(parent)
 void StartButton::drawStart()
 {
     QPixmap pixmap;
-    if(started)
+    if(started == START)
+        pixmap.load("D:/game/GUI/images/play.png");
+    else if(started == STOP)
         pixmap.load("D:/game/GUI/images/stop.png");
     else
-        pixmap.load("D:/game/GUI/images/play.png");
+        pixmap.load("D:/game/GUI/images/next.png");
+
     QIcon ButtonIcon(pixmap);
     setIcon(ButtonIcon);
     setIconSize(pixmap.rect().size());
@@ -20,12 +23,25 @@ void StartButton::drawStart()
 
 void StartButton::turnState()
 {
-    started = !started;
-    drawStart();
-    if(started)
+    if(started == START){
+        started = STOP;
         emit start();
-    else
+    }else if(started == STOP){
+        started = START;
         emit stop();
+    }else if(started == NEXT){
+        started = START;
+        emit goNext();
+
+    }
+    drawStart();
+
+}
+
+void StartButton::setNext()
+{
+    started = NEXT;
+    drawStart();
 }
 
 

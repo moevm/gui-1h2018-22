@@ -11,8 +11,6 @@
 LevelField::LevelField(QWidget *parent) : QWidget(parent)
 {
 
-
-    //setMinimumSize(QSize(100, 100));
 }
 
 

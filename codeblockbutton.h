@@ -25,6 +25,7 @@ public:
     bool isSelected();
     Action getAct();
     QTextEdit* getIterations();
+    void clean();
 
 signals:
 

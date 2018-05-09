@@ -12,6 +12,8 @@
 #include <QtCore/QStack>
 #include "loop.h"
 
+//QThread::msleep(ms);
+
 class MainWidget : public QWidget
 {
     Q_OBJECT
@@ -41,6 +43,7 @@ public slots:
     void update();
     void setCode(QVector<CodeBlock>* code);
     void stop();
+    void nextLevel();
 
 };
 

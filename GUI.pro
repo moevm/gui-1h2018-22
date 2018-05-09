@@ -52,7 +52,8 @@ HEADERS += \
     player.h \
     coin.h \
     codeblock.h \
-    loop.h
+    loop.h \
+    startbuttonstates.h
 
 FORMS +=
 

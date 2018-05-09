@@ -105,7 +105,6 @@ void MainWidget::start()
 
 void MainWidget::timerEvent(QTimerEvent *event)
 {
-    qDebug() << started;
     if(started && cursor < code.size()){
         emit extinguish();
         emit highlightBlock(cursor);
@@ -148,8 +147,6 @@ void MainWidget::timerEvent(QTimerEvent *event)
 
             }
         }
-        //update();
-
     }
 }
 
