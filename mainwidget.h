@@ -11,6 +11,7 @@
 #include <action.h>
 #include <QtCore/QStack>
 #include "loop.h"
+#include <QSlider>
 
 //QThread::msleep(ms);
 
@@ -27,6 +28,7 @@ class MainWidget : public QWidget
     QVector<CodeBlock> code;
     bool started = false;
     int cursor = 0;
+    QSlider* time;
 
 public:
     explicit MainWidget(QWidget *parent = nullptr);

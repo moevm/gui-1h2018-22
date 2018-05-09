@@ -4,6 +4,7 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QThread>
+#include <QTimerEvent>
 
 MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
 {
@@ -32,6 +33,13 @@ void MainWidget::setGame()
     qhbl = new QHBoxLayout();
     result = new QLabel(this);
     qhbl->addWidget(result);
+    time = new QSlider(Qt::Horizontal,this);
+    time->setMaximumWidth(120);
+    qhbl->addWidget(time);
+    QPushButton* menu = new QPushButton(this);
+    menu->setText("Menu");
+    menu->setMaximumSize(QSize(90,30));
+    qhbl->addWidget(menu);
     layout()->addItem(qhbl);
     levelManager = new LevelManager();
     levelManager->setLevel(0);
@@ -105,7 +113,6 @@ void MainWidget::start()
 
 void MainWidget::timerEvent(QTimerEvent *event)
 {
-    qDebug() << started;
     if(started && cursor < code.size()){
         emit extinguish();
         emit highlightBlock(cursor);
@@ -148,9 +155,9 @@ void MainWidget::timerEvent(QTimerEvent *event)
 
             }
         }
-        //update();
-
     }
+    killTimer(event->timerId());
+    startTimer(1000 - time->sliderPosition() * 7);
 }
 
 

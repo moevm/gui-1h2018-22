@@ -97,14 +97,12 @@ void LevelManager::updateLevel(Action act)
     case TURN_RIGHT:
     {
         player.turnRight();
-        qDebug() << "player.turnRight();";
         currentLevel[player.getX()][player.getY()] = player.getTurn();
         break;
     }
     case TURN_LEFT:
     {
         player.turnLeft();
-        qDebug() << "player.turnLeft();";
         currentLevel[player.getX()][player.getY()] = player.getTurn();
         break;
     }
@@ -116,7 +114,6 @@ void LevelManager::updateLevel(Action act)
             player.move();
             int px = player.getX();
             int py = player.getY();
-            qDebug() << "player.move();";
             while(this->hasCoin(px, py)){
                 this->removeCoin(px, py);
             }
@@ -154,7 +151,6 @@ bool LevelManager::removeCoin(int x, int y)
 {
     for(int i = 0; i < coins.size(); i++){
         if(coins[i].getPos() == QPoint(x,y)) {
-            qDebug("Coin removed");
             coins.remove(i);
             return true;
         }
