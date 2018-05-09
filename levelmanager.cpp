@@ -61,6 +61,7 @@ void LevelManager::setLevel(int level)
             }else if(field == 'p'){
                 player.setPos(i, j);
                 player.setTurn(PLAYER_RIGHT);
+                prevPlayersPos = player.getPos();
                 currentLevel[i][j] = PLAYER_RIGHT;
             }else if(field == 'c'){
                 coins.append(Coin(i, j));
@@ -97,6 +98,7 @@ void LevelManager::updateLevel(Action act)
     }
     case MOVE:
     {
+        prevPlayersPos = player.getPos();
         if(isAvailibaleMove()){
             currentLevel[player.getX()][player.getY()] = CELL;
             player.move();
@@ -104,8 +106,7 @@ void LevelManager::updateLevel(Action act)
             int py = player.getY();
             qDebug() << "player.move();";
             while(this->hasCoin(px, py)){
-                if(this->removeCoin(px, py))
-                    qDebug() << "Coin removed";
+                this->removeCoin(px, py);
             }
             currentLevel[px][py] = player.getTurn();
         }
@@ -141,6 +142,7 @@ bool LevelManager::removeCoin(int x, int y)
 {
     for(int i = 0; i < coins.size(); i++){
         if(coins[i].getPos() == QPoint(x,y)) {
+            qDebug("Coin removed");
             coins.remove(i);
             return true;
         }
@@ -151,6 +153,16 @@ bool LevelManager::removeCoin(int x, int y)
 int LevelManager::coinsSize()
 {
     return coins.size();
+}
+
+Player LevelManager::getPlayer()
+{
+    return player;
+}
+
+QPoint LevelManager::getPrevPlayersPos()
+{
+    return prevPlayersPos;
 }
 
 

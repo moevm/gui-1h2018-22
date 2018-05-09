@@ -11,28 +11,14 @@
 GameWidget::GameWidget(QWidget *parent) : QWidget(parent)
 {
     QPalette Pal(palette());
-
     // устанавливаем цвет фона
     Pal.setColor(QPalette::Background, QColor(0,0,255));
     this->setAutoFillBackground(true);
-    //this->setPalette(Pal);
-
     setMinimumSize(QSize(600, 400));
-
-    //startTimer(30);
-}
-
-void GameWidget::paintEvent(QPaintEvent *event)
-{
-
-}
-
-void GameWidget::timerEvent(QTimerEvent *event){
 }
 
 void GameWidget::showLevel(LevelManager *lm)
 {
-    //qDebug() << "StartShow";
     qDeleteAll(children());
     QVector<QVector<FieldState>> level = lm->getCurrentLevel();
     QGridLayout* gl = new QGridLayout(this);
@@ -47,8 +33,15 @@ void GameWidget::showLevel(LevelManager *lm)
 
         }
     }
-    //}
+}
 
+void GameWidget::showNext(LevelManager *lm)
+{
+    if(lm->getPlayer().getPos() != lm->getPrevPlayersPos()){
+        ((LevelField*) layout()->itemAt(lm->getPrevPlayersPos().x() *lm->getCurrentLevel().at(0).size() + lm->getPrevPlayersPos().y() )->widget())->removeCoin();
+        ((LevelField*) layout()->itemAt(lm->getPrevPlayersPos().x() *lm->getCurrentLevel().at(0).size() + lm->getPrevPlayersPos().y() )->widget())->setField(CELL);
+    }
+    ((LevelField*) layout()->itemAt(lm->getPlayer().getPos().x() * lm->getCurrentLevel().at(0).size() + lm->getPlayer().getPos().y())->widget())->setField(lm->getPlayer().getTurn());
 
 }
 

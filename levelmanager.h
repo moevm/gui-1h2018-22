@@ -10,6 +10,7 @@ class LevelManager
 {
     QVector<QVector<QVector<QChar>>> levels;
     QVector<QVector<FieldState>> currentLevel;
+    QPoint prevPlayersPos;
     Player player;
     QVector<Coin> coins;
 public:
@@ -23,6 +24,8 @@ public:
     bool hasCoin(int x, int y);
     bool removeCoin(int x, int y);
     int coinsSize();
+    Player getPlayer();
+    QPoint getPrevPlayersPos();
 
 };
 

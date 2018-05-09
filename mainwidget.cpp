@@ -95,7 +95,6 @@ void MainWidget::timerEvent(QTimerEvent *event)
     if(started && cursor < code.size()){
         emit extinguish();
         emit highlightBlock(cursor);
-
         levelManager->updateLevel(code[cursor].getAction());
         if(code[cursor].getAction() == LOOP_START){
             Loop loop;
@@ -124,11 +123,12 @@ void MainWidget::timerEvent(QTimerEvent *event)
             }
         }else{
             cursor++;
+            gameWidget->showNext(levelManager);
         }
         if(cursor == code.size()){
               result->setText(levelManager->coinsSize() == 0 ? "WIN" : "LOSE");
         }
-        update();
+        //update();
 
     }
 }

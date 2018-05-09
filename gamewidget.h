@@ -7,15 +7,13 @@
 #include "levelfield.h"
 #include "action.h"
 
-class GameWidget : public QWidget
-{
+class GameWidget : public QWidget {
     Q_OBJECT
 
 public:
     explicit GameWidget(QWidget *parent = nullptr);
-    void paintEvent(QPaintEvent *event);
-    void timerEvent(QTimerEvent *event);
     void showLevel(LevelManager *lm);
+    void showNext(LevelManager *lm);
     void showResult(QString res);
 
 signals:

@@ -27,6 +27,11 @@ void LevelField::putCoin()
     hasCoin = true;
 }
 
+void LevelField::removeCoin()
+{
+    hasCoin = false;
+}
+
 void LevelField::paintEvent(QPaintEvent *event)
 {
     QPalette Pal(palette());

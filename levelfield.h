@@ -13,6 +13,7 @@ public:
     explicit LevelField(QWidget *parent = nullptr);
     void setField(FieldState fs);
     void putCoin();
+    void removeCoin();
     void paintEvent(QPaintEvent *event);
 signals:
 
