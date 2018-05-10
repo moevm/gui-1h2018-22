@@ -12,10 +12,9 @@ MainWidget::MainWidget(QWidget *parent) : QWidget(parent)
     startTimer(1000);
 }
 
-void MainWidget::setGame()
+void MainWidget::setGame(int index)
 {
     qDeleteAll(children());
-
     QVBoxLayout* qvbl = new QVBoxLayout(this);
     QHBoxLayout *qhbl = new QHBoxLayout();
     gameWidget = new GameWidget(this);
@@ -43,7 +42,7 @@ void MainWidget::setGame()
     qhbl->addWidget(menu);
     qvbl->addLayout(qhbl);
     levelManager = new LevelManager();
-    levelManager->setLevel(0);
+    levelManager->setLevel(index);
     update();
 
     connect(codeBlocksWidget->getButton(0),SIGNAL(clicked(bool)),codeWidget,SLOT(setActiveMove()));
@@ -77,9 +76,45 @@ void MainWidget::setMenu()
 
     QVBoxLayout* qvbl = new QVBoxLayout(this);
     startGame = new QPushButton("Start", this);
-    qvbl->addWidget(startGame);
+    startGame->setMinimumHeight(100);
 
+    qvbl->addWidget(startGame);
+    chooseLevel = new QPushButton("Choose level", this);
+    chooseLevel->setMinimumHeight(100);
+    qvbl->addWidget(chooseLevel);
     connect(startGame, SIGNAL(clicked(bool)), this, SLOT(setGame()));
+    connect(chooseLevel, SIGNAL(clicked(bool)), this, SLOT(setChooseLevelMenu()));
+
+}
+
+void MainWidget::setChooseLevelMenu()
+{
+    qDeleteAll(children());
+    QVBoxLayout* qvbl = new QVBoxLayout(this);
+    QGridLayout* gl = new QGridLayout();
+    QPushButton* pb = new QPushButton(QString::number(1), this);
+    pb->setMinimumHeight(150);
+    gl->addWidget(pb,0, 0);
+    connect(pb, SIGNAL(clicked(bool)), this, SLOT(setGame1()));
+    pb = new QPushButton(QString::number(2), this);
+    pb->setMinimumHeight(150);
+    gl->addWidget(pb,0, 1);
+    connect(pb, SIGNAL(clicked(bool)), this, SLOT(setGame2()));
+    pb = new QPushButton(QString::number(3), this);
+    pb->setMinimumHeight(150);
+    gl->addWidget(pb,1, 0);
+    connect(pb, SIGNAL(clicked(bool)), this, SLOT(setGame3()));
+    pb = new QPushButton(QString::number(4), this);
+    pb->setMinimumHeight(150);
+    gl->addWidget(pb,1, 1);
+    connect(pb, SIGNAL(clicked(bool)), this, SLOT(setGame4()));
+
+    qvbl->addLayout(gl);
+    QPushButton* back = new QPushButton("Back", this);
+    back->setMinimumHeight(100);
+    qvbl->addWidget(back);
+    connect(back, SIGNAL(clicked(bool)), this, SLOT(setMenu()));
+
 }
 
 void MainWidget::update()
@@ -169,13 +204,35 @@ void MainWidget::timerEvent(QTimerEvent *event)
                 startButton->setNext();
             }else{
                 result->setText("LOSE");
-
             }
+            menu->setEnabled(true);
         }
     }
     killTimer(event->timerId());
     startTimer(1000 - time->sliderPosition() * 7);
     }
+}
+
+void MainWidget::setGame()
+{
+    setGame(0);
+}
+
+void MainWidget::setGame1()
+{
+    setGame(0);
+}
+void MainWidget::setGame2()
+{
+    setGame(1);
+}
+void MainWidget::setGame3()
+{
+    setGame(2);
+}
+void MainWidget::setGame4()
+{
+    setGame(3);
 }
 
 

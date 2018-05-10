@@ -45,7 +45,13 @@ signals:
 
 public slots:
     void setGame();
+    void setGame1();
+    void setGame2();
+    void setGame3();
+    void setGame4();
+    void setGame(int index);
     void setMenu();
+    void setChooseLevelMenu();
     void update();
     void setCode(QVector<CodeBlock>* code);
     void stop();
