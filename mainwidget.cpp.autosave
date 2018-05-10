@@ -169,8 +169,8 @@ void MainWidget::timerEvent(QTimerEvent *event)
                 startButton->setNext();
             }else{
                 result->setText("LOSE");
-
             }
+            menu->setEnabled(true);            
         }
     }
     killTimer(event->timerId());

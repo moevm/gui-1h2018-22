@@ -29,10 +29,12 @@ class MainWidget : public QWidget
     bool started = false;
     int cursor = 0;
     QSlider* time;
+    QPushButton* startGame;
+    QPushButton* chooseLevel;
+    QPushButton* menu;
 
 public:
     explicit MainWidget(QWidget *parent = nullptr);
-    void setGame();
     void start();
     void timerEvent(QTimerEvent *event);
 
@@ -42,6 +44,8 @@ signals:
     extinguish();
 
 public slots:
+    void setGame();
+    void setMenu();
     void update();
     void setCode(QVector<CodeBlock>* code);
     void stop();

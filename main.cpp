@@ -1,8 +1,6 @@
 #include <QApplication>
 #include "gamewidget.h"
 #include "mainwidget.h"
-#include <QThread>
-
 
 int main(int argc, char *argv[])
 {
@@ -10,8 +8,7 @@ int main(int argc, char *argv[])
 
 
     MainWidget* mw = new MainWidget();
-    mw->setGame();
-
+    mw->setMenu();
     mw->show();
 
 
