@@ -200,7 +200,8 @@ void MainWidget::timerEvent(QTimerEvent *event)
         }
         if(cursor == code.size()){
             if(levelManager->coinsSize() == 0){
-                result->setText("WIN");
+                QString res = QString("WIN! Score: ").append(QString::number((levelManager->getbest(levelManager->getLevel()) * 100)/code.size())).append("%");
+                result->setText(res);
                 startButton->setNext();
             }else{
                 result->setText("LOSE");

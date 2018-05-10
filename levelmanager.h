@@ -14,6 +14,7 @@ class LevelManager
     QPoint prevPlayersPos;
     Player player;
     QVector<Coin> coins;
+    int best[4];
 public:
     LevelManager();
     void setLevel(int level);
@@ -29,6 +30,8 @@ public:
     int coinsSize();
     Player getPlayer();
     QPoint getPrevPlayersPos();
+    int getbest(int i);
+    int getLevel();
 
 };
 

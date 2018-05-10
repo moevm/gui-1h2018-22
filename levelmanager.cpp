@@ -21,7 +21,7 @@ LevelManager::LevelManager()
         QStringList list = str.split(" x ");
         w =((QString) list.at(0)).toInt();
         h =((QString) list.at(1)).toInt();
-
+        best[l] =((QString) list.at(2)).toInt();
         QFile levelFile(QStringLiteral("D:/game/GUI/levels/level%1.txt").arg(l+1));
 
         levelFile.open(QIODevice::ReadWrite);
@@ -74,7 +74,6 @@ void LevelManager::setLevel(int level)
             }
         }
     }
-
 }
 
 int LevelManager::nextLevel()
@@ -171,6 +170,16 @@ Player LevelManager::getPlayer()
 QPoint LevelManager::getPrevPlayersPos()
 {
     return prevPlayersPos;
+}
+
+int LevelManager::getbest(int i)
+{
+    return best[i];
+}
+
+int LevelManager::getLevel()
+{
+    return level;
 }
 
 
